@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  body {
+    background-color: #f1e9e9;
+  }
+  .card-body.bg-light {
+    background-color: #029d7b !important;
+    color: white;
+  }
+
+  .mb-4{
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+</style>
+
+<h2></h2>
+<h2 class="mb-4">ملخص أستثماراتك</h2>
+
+<!-- Summary Cards -->
+<div class="row text-center g-4 mb-4">
+  <div class="col-md-3">
+    <div class="card shadow">
+      <div class="card-body bg-light">
+        <h3> عدد العقارات</h3>
+        <h3>{{ properties|length }}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chart.js -->
+<canvas id="budgetChart" height="100"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const labels = JSON.parse('{{ properties | map(attribute="type") | list | tojson | safe }}');
+  const values = JSON.parse('{{ properties | map(attribute="price") | list | tojson | safe }}');
+
+  const ctx = document.getElementById('budgetChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'الأسعار (ريال)',
+        data: values,
+        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+        borderRadius: 6
+      }]
+    },
+    options: {
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+
+<!-- Property Matches -->
+<div class="mt-5">
+  <h3>عقارات مقترحة لك</h3>
+
+  {% for property in properties %}
+  <div class="card mb-3">
+    <div class="card-header">🏡 {{ property.type }} - {{ property.location }}</div>
+    <div class="card-body">
+      <p>💰 السعر: {{ property.price }} ريال</p>
+      <p>📝 {{ property.desc }}</p>
+    </div>
+  </div>
+  {% else %}
+  <p class="text-muted">لا توجد عقارات حالياً تطابق تفضيلاتك.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

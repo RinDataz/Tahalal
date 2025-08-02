@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+  body {
+    background-color: #f1e9e9;
+  }
+
+  .form-box {
+    background: linear-gradient(to bottom right, #037d633f, #f1e9e9);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 50px auto;
+    color: #000;
+  }
+
+  .form-box h1,
+  .form-box h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  .btn-custom {
+    background-color: #029d7b;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  .btn-custom:hover {
+    background-color: #02725d;
+  }
+</style>
+
+<div class="form-box">
+  <h1>عرفنا عنك كمالك أكثر</h1>
+  <h3>هذا النموذج يساعدنا نخلي تجربتك شخصية قدر الأمكان</h3>
+
+  <form method="post" enctype="multipart/form-data">
+    <div class="mb-3"><label>نوع العقار:</label>
+      <select name="type" class="form-control">
+        <option>أستثمار موسمي</option>
+        <option>زراعي</option>
+        <option>أرض</option>
+      </select>
+    </div>
+
+    <div class="mb-3"><label>المدينة:</label>
+      <select name="location" class="form-control">
+        <option>أبها</option>
+        <option>خميس مشيط</option>
+        <option>النماص</option>
+        <option>رجال المع</option>
+        <option>بيشة</option>
+        <option>سراة عبيدة</option>
+      </select>
+    </div>
+
+    <div class="mb-3"><label>المساحة (م²):</label>
+      <input type="text" name="area" class="form-control" placeholder="أدخل المساحة مثلاً: 750">
+    </div>
+
+    <div class="mb-3"><label>السعر المطلوب:</label>
+      <select name="price" class="form-control">
+        <option value="250000">أقل من 500,000</option>
+        <option value="750000">500,000 - 1,000,000</option>
+        <option value="1500000">1,000,000 - 2,000,000</option>
+        <option value="3000000">أكثر من 2,000,000</option>
+      </select>
+    </div>
+
+    <div class="mb-3"><label>وصف العقار:</label>
+      <textarea name="desc" class="form-control" rows="3" placeholder="اكتب وصفًا مختصرًا للعقار"></textarea>
+    </div>
+
+    <div class="mb-3"><label>العائد السنوي المتوقع (%):</label>
+      <select name="return" class="form-control">
+        <option value="5">5%</option>
+        <option value="8">8%</option>
+        <option value="12">12%</option>
+        <option value="15">15% أو أكثر</option>
+      </select>
+    </div>
+
+    <div class="mb-3"><label>صور العقار:</label>
+      <input name="images" type="file" class="form-control" multiple>
+    </div>
+
+    <button type="submit" class="btn btn-custom w-100">تسجيل</button>
+  </form>
+</div>
+
+{% endblock %}

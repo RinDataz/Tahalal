@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  body {
+    background-color: #f1e9e9;
+  }
+
+  .card-body.bg-light {
+    background-color: #029d7b !important;
+    color: white;
+  }
+
+  .mb-4{
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+</style>
+
+<h2></h2>
+<h2 class="mb-4">ملخصك</h2>
+
+<!-- Summary Cards -->
+<div class="row text-center g-4 mb-4">
+  <div class="col-md-3">
+    <div class="card shadow">
+      <div class="card-body bg-light">
+        <h2>👥</h2>
+        <h5> عدد المستثمرين</h5>
+        <h3>{{ investors|length }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card shadow">
+      <div class="card-body bg-light">
+        <h2>🏘️</h2>
+        <h5> عدد العقارات</h5>
+        <h3>{{ owners|length }}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Investor Match Results -->
+<div class="mt-5">
+  <h3>📌 مستثمرين مقترحين</h3>
+
+  {% for inv in investors %}
+    <div class="card mb-3">
+      <div class="card-header">📌 مستثمر {{ loop.index + 100 }} ({{ inv.city }} - {{ inv.type }})</div>
+      <div class="card-body">
+        <p>🏠 {{ inv.type }} - {{ inv.city }} | 💰 {{ inv.budget }} ريال</p>
+        <p>🎓 مستوى الخبرة: {{ inv.experience }} | 🎯 الهدف: {{ inv.goal }}</p>
+        <p>⚖️ تحمل المخاطر: {{ inv.risk }} | 🕒 المدة: {{ inv.duration }}</p>
+      </div>
+    </div>
+  {% else %}
+    <p class="text-muted">لا يوجد مستثمرين حالياً يطابقون العرض.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}
