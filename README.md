@@ -58,7 +58,7 @@ tahlal\_final\_clustering\_mcq\_data/
 
 ---
 
-## ⚙️ Setup Instructions
+##⚙️ Setup Instructions
 
 1. **Clone the repo**  
    ```bash
@@ -91,7 +91,7 @@ tahlal\_final\_clustering\_mcq\_data/
 
 ---
 
-## 🧠 How It Works
+##🧠 How It Works
 
 ### For Investors:
 
@@ -109,7 +109,7 @@ tahlal\_final\_clustering\_mcq\_data/
 
 ---
 
-## 🎯 Customization
+##🎯 Customization
 
 * **Data**:
 
@@ -127,7 +127,7 @@ tahlal\_final\_clustering\_mcq\_data/
 
 ---
 
-## 📋 Dependencies
+##📋 Dependencies
 
 Listed in `requirements.txt`, key ones include:
 
@@ -145,7 +145,7 @@ pip freeze > requirements.txt
 
 ---
 
-## 💡 Example Users
+##💡 Example Users
 
 * Sample `investors.json` and `properties.json` include 10 items each with:
 
@@ -170,7 +170,7 @@ You may safely delete:
 
 ---
 
-## 🏁 Future Improvements
+##🏁 Future Improvements
 
 * Add image uploads to listings
 * Filter matches with weights instead of cluster-only logic
@@ -179,8 +179,9 @@ You may safely delete:
 
 ---
 
-## 🏅 Built For
+##🏅 Built For
 
 
 > **هاكثون عسير 2025**
+
 
